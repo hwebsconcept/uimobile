@@ -1,0 +1,60 @@
+body
+{
+	font-family: 'Open Sans', sans-serif;
+	background: #DDDDDD;
+	padding-top:40px;
+	padding-bottom:40px;
+}
+h1,h2,h3,h5
+{
+	margin:0;
+	padding:0;
+	line-height:0.8;
+}
+h4
+{
+	margin:0;
+	padding:0;
+}
+.navbar-fixed-top.fixed-top,.footer.navbar-fixed-bottom
+{
+	background:#5A2854;
+}
+
+#background
+{
+	background: url(../img/bg.jpg) no-repeat center center fixed; 
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+}
+a
+{
+	color:#fff;
+}
+a:hover
+{
+	color:#fff;
+}
+
+#divLoading
+{
+    display : none;
+    position : fixed;
+    z-index: 100;
+    background-image : url('http://loadinggif.com/images/image-selection/3.gif');
+    background-color:#666;
+    opacity : 0.4;
+    background-repeat : no-repeat;
+    background-position : center;
+    left : 0;
+    bottom : 0;
+    right : 0;
+    top : 0;
+}
+
+
+
+
+

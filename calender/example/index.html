@@ -1,0 +1,127 @@
+<!doctype>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title> Nuconn </title>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Maven+Pro:700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="../../css/style.css">
+<link href="../../font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Respomsive slider -->
+    <link href="../css/responsive-calendar.css" rel="stylesheet">
+  </head>
+<body>
+<div class="navbar-fixed-top fixed-top">
+	<div class="container">
+		<div class="row" style="color:#fff;">
+			<div class="col-md-6 col-sm-6 col-xs-6" style="padding:3px;">
+				<h3> <b>CALENDER</b></h3>
+        	</div>
+			<div class="col-md-6 col-sm-6 col-xs-6" style="padding:3px;">
+				<h3><i class="fa fa-align-justify pull-right"></i></h3>
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+
+
+    <div class="container">
+      <!-- Responsive calendar - START -->
+    	<div class="responsive-calendar">
+        <div class="controls">
+            <a class="pull-left" data-go="prev"><div class="btn btn-primary">Prev</div></a>
+            <h4><span data-head-year></span> <span data-head-month></span></h4>
+            <a class="pull-right" data-go="next"><div class="btn btn-primary">Next</div></a>
+        </div><hr/>
+        <div class="day-headers">
+          <div class="day header">Mon</div>
+          <div class="day header">Tue</div>
+          <div class="day header">Wed</div>
+          <div class="day header">Thu</div>
+          <div class="day header">Fri</div>
+          <div class="day header">Sat</div>
+          <div class="day header">Sun</div>
+        </div>
+        <div class="days" data-group="days">
+          
+        </div>
+      </div>
+      <!-- Responsive calendar - END -->
+    </div>
+	
+	<div class="container">
+	<div class="row" style="border-bottom:1px solid #ccc; background:#fff; padding:3px;">
+		<div class="col-md-12">
+		<div>
+			<span style="font-size:18px;"><i class="fa fa-book" style="color:red;"></i> <b>EEG 507</b></span> <span class="pull-right"></span>
+			<br><span style="font-size:16px; color:purple;">2015 May 19</span><br>
+			All assignments are to be submitted on or before 4pm. Failure to do so won't have a CA of the assignment<br><br>
+			<small><i class="glyphicon glyphicon-edit"></i> View Details</small>
+		</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="container">
+	<div class="row" style="border-bottom:1px solid #ccc; background:#fff; padding:3px;">
+		<div class="col-md-12">
+		<div>
+			<span style="font-size:18px;"><i class="fa fa-book" style="color:red;"></i> <b>CPE 509</b></span> <span class="pull-right"></span>
+			<br><span style="font-size:16px; color:purple;">2015 May 29</span><br>
+			Test for CPE 509 hold in ELT by 12pm Prompt.<br><br>
+			<small><i class="glyphicon glyphicon-edit"></i> View Details</small>
+		</div>
+		</div>
+	</div>
+</div>
+	
+
+	
+	<div class="footer navbar-fixed-bottom">
+	<div class="container-fluid">
+		<div class="row"  >
+			<div class="col-md-2 col-sm-2 col-xs-2" style="padding:10px 0px; color:#fff;" align="center">
+					<a href="../../chat.html"><i class="fa fa-2x fa-comment"></i></a>
+			</div>
+			<div class="col-md-2 col-sm-2 col-xs-2" style="padding:10px 0px; color:#fff;" align="center">
+					<a href="../../library.html"><i class="fa fa-2x fa-book"></i></a>
+			</div>
+			<div class="col-md-2 col-sm-2 col-xs-2" style="padding:10px 0px; color:#fff;" align="center">
+					<a href="../../profile.html"><i class="fa fa-2x fa-user"></i></a>
+			</div>
+			<div class="col-md-2 col-sm-2 col-xs-2 "style="padding:10px 0px; color:#fff;" align="center">
+					<a href="../../notification.html"><i class="fa fa-2x fa-globe"></i></a>
+			</div>
+			<div class="col-md-2 col-sm-2 col-xs-2 "style="padding:10px 0px; color:#fff;" align="center">
+					<a href="index.html"><i class="fa fa-2x fa-calendar"></i></a>
+			</div>
+			<div class="col-md-2 col-sm-2 col-xs-2 "style="padding:10px 0px; color:#fff;" align="center">
+					<a href="../../news.html"><i class="fa fa-2x fa-newspaper-o"></i></a>
+			</div>
+		</div>
+	</div>	
+</div>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/responsive-calendar.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $(".responsive-calendar").responsiveCalendar({
+          time: '2015-05',
+          events: {
+            "2015-05-19": {"number": 1, "url": "../../501.html"},
+            "2015-05-29": {"number": 1, "url": "../../502.html"}, 
+            "2013-05-03":{"number": 1}, 
+            "2013-06-12": {}}
+        });
+      });
+    </script>
+  </body>
+</html>

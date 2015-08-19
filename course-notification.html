@@ -1,0 +1,121 @@
+
+<!doctype>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title> Nuconn </title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/normal.css">
+<link rel="stylesheet" type="text/css" href="css/menustyle.css">
+<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <script type="text/javascript">
+        var url = window.location.pathname;var filename = url.substring(url.lastIndexOf('/')+1);
+        if(localStorage.matric && filename == 'course-notification.html')
+        {}
+        else
+        {
+            window.location.href = "index.html";
+        }
+    </script>
+</head>
+
+<body>
+
+<div id="divLoading">
+</div>
+
+<!-- div #main .main-content -->
+
+<div id="main-navbar" class="main-navbar main-navbar-fixed-top">
+    <div class="main-navbar-content">
+        <h3 class="pull-left text-uppercase" style="padding-top: 4px;"><b>course notification</b></h3>
+        <div id="toggle-sidebar" class="icon right">
+            <h3><i class="glyphicon glyphicon-align-justify pull-right"></i></h3>
+        </div>
+    </div>
+</div>
+<!-- div #main-navbar .main-navbar .main-navbar-fixed-top -->
+
+<div id="main-sidebar" class="main-sidebar main-sidebar-right">
+    <div id="main-sidebar-wrapper" class="main-sidebar-wrapper">
+        <div class="section">
+            <img src="img/probg.jpg" class="img-responsive" />
+        </div>
+        <nav>
+            <ul>
+                <li><a href="profile.html"><i class="fa fa-user"></i> PROFILE</a></li>
+                <li><a href="notification.html"><i class="fa fa-globe"></i> NOTIFICATIONS</a></li>
+                <li><a href="library.html"><i class="fa fa-book"></i> LIBRARY</a></li>
+                
+                <li><a href="call.html"><i class="fa fa-users"></i> FRIENDS</a></li>
+                <li><a href="logout.html"><i class="fa fa-backward"></i> LOG OUT</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<!-- #main-sidebar .main-sidebar .main-sidebar-right -->
+
+
+
+	<div id="myCourseNotification"></div>
+
+
+
+
+<script src="js/jquery.js"></script>
+<script src="js/jqueryui.js"></script>
+<script src="js/jquery.simpler-sidebar.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#main-sidebar').simplerSidebar({
+            opener: '#toggle-sidebar',
+            animation: {
+                easing: "easeOutQuint"
+            },
+            sidebar: {
+                closingLinks: '.close-sb'
+            }
+        });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function(){
+        function getURLParameter(url, name) {
+            return (RegExp(name + '=' + '(.+?)(&|$)').exec(url)||[,null])[1];
+        }
+        var url= window.location.href;
+        var id = getURLParameter(url, 'id');
+        $.ajax({
+            type: "GET",
+            url: 'http://truparsecreative.com/uimobile/connections/course-notification.php',
+            data: "id=" + id ,
+            beforeSend: function(){
+                $("div#divLoading").show();
+            },
+            success: function(data)
+            {
+                $("div#divLoading").fadeOut();
+                 $('#myCourseNotification').html(data);
+            },
+            error: function (data){
+                $('#myCourseNotification').html(data);
+            }
+        });
+
+
+        /*$.get('connections/course-notification.php', function(data){
+            $('#myCourseNotification').html(data);
+        })*/
+        //$('#myCourseNotification').load('connections/course-notification.php');
+    });
+</script>
+
+</body>
+</html>

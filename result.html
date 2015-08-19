@@ -1,0 +1,176 @@
+<!doctype>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title> Nuconn </title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/normal.css">
+<link rel="stylesheet" type="text/css" href="css/menustyle.css">
+<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <script type="text/javascript">
+        var url = window.location.pathname;var filename = url.substring(url.lastIndexOf('/')+1);
+        if(localStorage.matric && filename == 'result.html')
+        {}
+        else
+        {
+            window.location.href = "index.html";
+        }
+    </script>
+
+
+</head>
+
+<body>
+<div id="divLoading">
+</div>
+
+<!-- div #main .main-content -->
+
+<div id="main-navbar" class="main-navbar main-navbar-fixed-top">
+    <div class="main-navbar-content">
+        <h3 class="pull-left text-uppercase" style="padding-top: 4px;"><b>result</b></h3>
+        <div id="toggle-sidebar" class="icon right">
+            <h3><i class="glyphicon glyphicon-align-justify pull-right"></i></h3>
+        </div>
+    </div>
+</div>
+<!-- div #main-navbar .main-navbar .main-navbar-fixed-top -->
+
+<div id="main-sidebar" class="main-sidebar main-sidebar-right">
+    <div id="main-sidebar-wrapper" class="main-sidebar-wrapper">
+        <div class="section">
+            <img src="img/probg.jpg" class="img-responsive" />
+        </div>
+        <nav>
+            <ul>
+                <li><a href="profile.html"><i class="fa fa-user"></i> PROFILE</a></li>
+                <li><a href="notification.html"><i class="fa fa-globe"></i> NOTIFICATIONS</a></li>
+                <li><a href="library.html"><i class="fa fa-book"></i> LIBRARY</a></li>
+                
+                <li><a href="call.html"><i class="fa fa-users"></i> FRIENDS</a></li>
+                <li><a href="logout.html"><i class="fa fa-backward"></i> LOG OUT</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<!-- #main-sidebar .main-sidebar .main-sidebar-right -->
+
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-7 col-sm-7 col-xs-7">
+            <div id="basicContent"></div>
+		</div>
+		<div class="col-md-5 col-sm-5 col-xs-5 ">
+			<div id="img"></div>
+		</div>
+	</div>
+</div>	
+
+<div class="container">
+	<div class="row" >
+		<div class="col-md-12" style="background:#F1F1F1; margin-bottom:5px">
+		    <div id="level"></div>
+		</div>
+	</div>
+</div>	
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 col-sm-12 col-xs-12" style="padding:5px;" align="center">
+            <div id="friendbutton"></div>
+		</div>
+	</div>
+</div>
+
+
+<script src="js/jquery.js"></script>
+<script src="js/jqueryui.js"></script>
+<script src="js/jquery.simpler-sidebar.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+            $(document).ready(function() {
+                $('#main-sidebar').simplerSidebar({
+                    opener: '#toggle-sidebar',
+                    animation: {
+                        easing: "easeOutQuint"
+                    },
+                    sidebar: {
+                        closingLinks: '.close-sb'
+                    }
+                });
+            });
+</script>
+
+
+<script>
+    $(document).ready(function(){
+
+        var dataString="recieverMatric="+localStorage.recieverMatric ;
+
+        $.ajax({
+            type: 'POST',
+            url: 'http://truparsecreative.com/uimobile/connections/results.php',
+            data: dataString,
+            crossDomain: true,
+            dataType: 'JSON',
+            beforeSend: function(){
+                $("div#divLoading").show();
+            },
+            success: function (response) {
+                $("div#divLoading").fadeOut();
+                console.log(response);
+
+                var input ="";
+                input +='<b>' + response.name + '</b><br>';
+                input += response.faculty + '<br>';
+                input += response.dept + '<br>';
+                input +=response.school + '<br>';
+
+                var cumgrade= response.cumgpa;
+                var currentgrade= response.currentgpa;
+                var img= response.img;
+                $('#basicContent').html(input);
+                $('#img').html(img);
+                $('#level').html(response.level + ' Level ' +response.semester+ ' Semester')
+
+            },
+            error: function (response){
+                alert (response);
+            }
+
+        });
+
+
+
+
+
+        var dataget = "matric="+ localStorage.matric + "&recieverMatric="+localStorage.recieverMatric ;
+        $.ajax({
+            type: "GET",
+            url: 'http://truparsecreative.com/uimobile/connections/friend-check.php',
+            data: dataget ,
+            success: function(data)
+            {
+                console.log(data);
+                $('#friendbutton').html(data);
+            },
+            error: function (data){
+                $('#friendbutton').html(data);
+            }
+        });
+
+
+    });
+
+
+</script>
+
+
+</body>
+</html>
